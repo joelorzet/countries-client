@@ -1,0 +1,47 @@
+.container {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.content {
+    background-color: #ccc;
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 90%;
+}
+
+.principal {
+    font-size: 1.6em;
+    line-height: 130%
+}
+
+
+.img{
+    max-width: 26em;
+    border-radius: 5px;
+    margin-top: 0.5em;
+}
+
+.data {
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+    width: 90%;
+}
+

@@ -1,0 +1,57 @@
+.inputBox {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.normal {
+    border: solid 2px #cdc2ae;
+	border-radius: 8px;
+	padding: 0.9em 1.7em;
+	margin-right: 10px;
+	transition: all 0.15s;
+	font-size: 18px;
+}
+.normal:hover {
+    border: solid 2px #a8a39a;
+}
+.normal:focus {
+	border: solid 2px #888071;
+	background: #e2e0dd;
+    outline: none;
+}
+
+.secondary {
+    border: solid 2px #cdc2ae;
+	border-radius: 8px;
+	padding: 10px 25px;
+	margin-right: 10px;
+	transition: all 0.15s;
+    text-align: center;
+}
+.secondary:hover {
+    border: solid 2px #a8a39a;
+}
+.secondary:focus {
+	border: solid 2px #888071;
+	background: #e6e5e4;
+    outline: none;
+}
+
+.label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #686764;
+}
+
+.error {
+    box-sizing: content-box;
+    color: red;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 2;
+    margin: 0;
+}

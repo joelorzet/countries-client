@@ -1,0 +1,53 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+    flex-direction: column;
+}
+
+.cards {
+    margin-top: 20px;
+    display: flex;
+    width: 90%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+    gap: 15px;
+}
+
+.searchResult {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerSort {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 15px;
+        padding: 1em;
+}
+
+
+.boxButtons {
+    margin-top: 1em ;
+}
+.sortBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 0.5em;
+    flex-wrap: wrap;
+    padding: 0.2em;
+}

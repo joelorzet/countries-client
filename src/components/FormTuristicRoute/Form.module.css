@@ -1,0 +1,61 @@
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.inputsContainer{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 7em;
+    gap: 20px;
+}
+
+
+.countries {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 230px;
+    overflow:auto;
+    gap: 2px;
+    flex-wrap: wrap;
+    margin: 10px 0px;
+}
+
+.countries::-webkit-scrollbar {
+    display: none;
+}
+
+.buttonsToShow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow:auto;
+    gap: 2px;
+    flex-wrap: wrap;
+    margin: 10px 0px;
+}
+.btnSearch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow:auto;
+    gap: 2px;
+    flex-wrap: wrap;
+    margin: 10px 0px;
+}
+
+
+.success {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 0.5em;
+
+}
+
+.h3 {
+    margin-top: 0.5em;
+}
