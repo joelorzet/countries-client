@@ -6,6 +6,7 @@ import {
 	ORDER_BY_POPULATION_ASC,
 	ORDER_BY_POPULATION_DES,
 	FILTER_BY_ACTIVITY,
+	GET_COUNTRIES_BY_QUERY,
 	SORT_BY_CONTINENT,
 	CLEAR_COUNTRY_DETAIL,
 	CLEAR_COUNTRIES_LOADED,
@@ -49,6 +50,9 @@ export default function rootReducer(state = initialState, action) {
 
 		case CLEAR_COUNTRIES_LOADED:
 			return { ...state, countriesLoaded: [], countriesFiltered: [] };
+
+		case GET_COUNTRIES_BY_QUERY:
+			return { ...state, countriesFiltered: [...action.payload] };
 
 		case SET_CURRENT_PAGE:
 			return { ...state, currentPage: action.payload };
