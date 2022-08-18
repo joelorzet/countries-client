@@ -125,7 +125,7 @@ function Home() {
 							<Input
 								name='search'
 								type='text'
-								placeholder='Ciudad...'
+								placeholder='Buscar paises...'
 								state={data}
 								setState={setData}
 								className='normal'
