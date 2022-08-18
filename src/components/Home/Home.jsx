@@ -99,6 +99,7 @@ function Home() {
 	//  busqueda manual de ciudad
 	const submitHandler = (e) => {
 		e.preventDefault();
+		dispatch(setCurrentPage(1));
 		dispatch(getCountriesBySearch(data.search));
 
 		e.target[0].value = '';
