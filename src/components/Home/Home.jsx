@@ -6,6 +6,7 @@ import {
 	orderZToA,
 	orderByPopulationAsc,
 	orderByPopulationDes,
+	getCountriesBySearch,
 	getCountries,
 	setCurrentPage,
 	sortByActivity,
@@ -98,22 +99,10 @@ function Home() {
 	//  busqueda manual de ciudad
 	const submitHandler = (e) => {
 		e.preventDefault();
-		searchCitie();
+		dispatch(getCountriesBySearch(data.search));
+
 		e.target[0].value = '';
 	};
-
-	// traemos una card en particular en la busqueda manual si es que hay
-	function searchCitie() {
-		const country = cities.filter((e) => e.name.toLowerCase().includes(data.search.toLowerCase()));
-		if (country.length) {
-			setCiti({ country: country[0] });
-			setSearch(true);
-			setError(false);
-		} else {
-			setError(true);
-			setSearch(false);
-		}
-	}
 
 	// limpieza del input de busqueda manual
 	const clearInput = () => {
@@ -161,6 +150,7 @@ function Home() {
 									onClick={() => {
 										dispatch(sortByContinent(e));
 										setSelectedFilter(e);
+										dispatch(setCurrentPage(1));
 									}}
 									className={(selectedFilter === e && 'selected') || 'btnLow'}
 								/>
@@ -171,6 +161,7 @@ function Home() {
 								onClick={() => {
 									dispatch(defaultCountries());
 									setSelectedFilter('default');
+									dispatch(setCurrentPage(1));
 								}}
 								className={(selectedFilter === 'default' && 'selected') || 'btnLow'}
 							/>
@@ -236,6 +227,7 @@ function Home() {
 											onClick={() => {
 												dispatch(sortByActivity(e));
 												setSelectedFilter(e);
+												dispatch(setCurrentPage(1));
 											}}
 											className={(selectedFilter === e && 'selected') || 'btnLow'}
 										/>

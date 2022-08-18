@@ -8,6 +8,7 @@ export const DELETE_ACTIVITY = 'DELETE_ACTIVITY';
 export const FILTER_BY_ACTIVITY = 'FILTER_BY_ACTIVITY';
 export const GET_COUNTRIES = 'GET_COUNTRIES';
 export const GET_COUNTRIE_DETAIL = 'GET_COUNTRIE_DETAIL';
+export const GET_COUNTRIES_BY_QUERY = 'GET_COUNTRIES_BY_QUERY';
 export const ORDER_A_TO_Z = 'ORDER_A_TO_Z';
 export const ORDER_Z_TO_A = 'ORDER_Z_TO_A';
 export const ORDER_BY_POPULATION_ASC = 'ORDER_BY_POPULATION_ASC';
@@ -53,6 +54,18 @@ export function getCountrieDetail(id, setLoading) {
 			if (setLoading) setLoading(false);
 
 			dispatch({ type: GET_COUNTRIE_DETAIL, payload: res.data[0] });
+		} catch (err) {
+			console.error(err);
+		}
+	};
+}
+
+export function getCountriesBySearch(query) {
+	return async function (dispatch) {
+		try {
+			const res = await axios.get(`${API}/countries?name=${query}`);
+
+			dispatch({ type: GET_COUNTRIES_BY_QUERY, payload: res.data });
 		} catch (err) {
 			console.error(err);
 		}
