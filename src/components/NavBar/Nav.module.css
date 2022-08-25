@@ -1,4 +1,10 @@
 .navBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navBarCont {
     padding: 10px;
     display: flex;
     justify-content: flex-end;
@@ -8,5 +14,15 @@
 
 .link {
     margin-right: 15px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
 }   
 
+.icon {
+    box-sizing: border-box;
+    width: 1.7em;
+    height: 1.7em;
+}
