@@ -22,12 +22,17 @@ function NavBar() {
 			</div>
 
 			<div className={style.navBarCont}>
-				<a href='https://github.com/joelorzet' target='_blanck' className={style.link}>
+				<a href='https://github.com/joelorzet' target='_blank' rel='noreferrer' className={style.link}>
 					GitHub
 					<img src={gitIcon} alt='git-Icon' className={style.icon} />
 				</a>
 
-				<a href='https://www.linkedin.com/in/joelorzet/' target='_blanck' className={style.link}>
+				<a
+					href='https://www.linkedin.com/in/joelorzet/'
+					target='_blank'
+					rel='noreferrer'
+					className={style.link}
+				>
 					LinkedIn
 					<img src={linkedin} alt='linkedin-Icon' className={style.icon} />
 				</a>
