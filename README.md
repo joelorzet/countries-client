@@ -41,7 +41,7 @@ Start the server
   npm run start
 ```
 
-You also gonna need to download the api-client
+You also gonna need to download the api-repository
 
 https://github.com/joelorzet/countries-api
 
