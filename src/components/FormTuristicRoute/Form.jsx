@@ -117,7 +117,7 @@ function Form() {
 	};
 
 	return (
-		<div>
+		<div className={style.container}>
 			<form className={style.form} onSubmit={onSubmit}>
 				{/* aca estan los 4 inputs principales */}
 				<div className={style.inputsContainer}>

@@ -3,7 +3,7 @@ import style from './Loading.module.css';
 
 function Loading() {
 	return (
-		<div class={style.ldsRipple}>
+		<div className={style.ldsRipple}>
 			<div></div>
 			<div></div>
 		</div>
