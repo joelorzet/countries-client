@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../Button/Button.jsx';
 import { Link } from 'react-router-dom';
 import style from './LandingPage.module.css';
-const image = require('./mundo.png').default;
+import image from './mundo.png';
 
 function LandingPage() {
 	return (
