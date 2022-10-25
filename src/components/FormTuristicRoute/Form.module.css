@@ -1,6 +1,7 @@
 .container {
-    min-height: 100vh;
-    margin-top: 1.3rem;
+    min-height: 100%;
+    padding: 2rem;
+    /* margin-top: 1.3rem; */
     /* margin-bottom: 2rem; */
 }
 

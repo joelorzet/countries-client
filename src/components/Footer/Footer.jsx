@@ -1,11 +1,12 @@
 import React from 'react';
+import Social from '../Social/Social';
 import style from './Footer.module.css';
 
 function Footer() {
 	return (
 		<footer className={style.container}>
-			<div>p</div>
-			<div>Countries © 2022 All rights reserved</div>
+			<Social />
+			<div>Copyright © 2022 Countries. Todos los derechos reservados.</div>
 		</footer>
 	);
 }

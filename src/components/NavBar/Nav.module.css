@@ -12,6 +12,13 @@
     align-items: center;
 }
 
+.context {
+    min-height: 3rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
 .link {
     margin-right: 15px;
     text-decoration: none;

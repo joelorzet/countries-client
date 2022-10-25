@@ -47,10 +47,10 @@ React Js, React-Redux, Javascript, HTML, CSS...
 
 ## Screenshots
 
-![App Screenshot](./assets/cli.png)
-![App Screenshot](./assets/cli-1.png)
-![App Screenshot](./assets/cli-4.png)
-![App Screenshot](./assets/cli-5.png)
+![App Screenshot](./src/assets/cli.png)
+![App Screenshot](./src/assets/cli-1.png)
+![App Screenshot](./src/assets/cli-4.png)
+![App Screenshot](./src/assets/cli-5.png)
 
 ## Tech Stack
 

@@ -16,7 +16,7 @@ function App() {
 			<Route exact path={PATH.home} component={Home} />
 			<Route exact path={PATH.createActivity} component={Form} />
 			<Route exact path='/home/countrie-detail/:idPais' component={CountrieDetail} />
-			{/* <Route path={PATH.home} component={Footer} /> */}
+			<Route path={PATH.home} component={Footer} />
 		</div>
 	);
 }
