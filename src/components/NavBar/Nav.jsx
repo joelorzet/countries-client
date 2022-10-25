@@ -8,7 +8,7 @@ function NavBar() {
 	return (
 		<nav className={style.navBar}>
 			<div className={style.context}>
-				<p className={style.link}>Bienvenidos a Countries</p>
+				<p className={style.link}>Countries</p>
 			</div>
 			<div className={style.navBarCont}>
 				{navItems?.map((e, i) => (
