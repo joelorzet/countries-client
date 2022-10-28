@@ -16,7 +16,8 @@ export const ORDER_BY_POPULATION_DES = 'ORDER_BY_POPULATION_DES';
 export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 export const SORT_BY_CONTINENT = 'SORT_BY_CONTINENT';
 
-const API = 'https://countries-app-joel.herokuapp.com';
+// const API = 'https://countries-app-joel.herokuapp.com';
+const API = 'http://localhost:3001';
 
 //configurar objeto para hacer un put con los datos del form
 //cambiamos a axios para no renegar tanto
@@ -25,7 +26,7 @@ export function addActivity(data) {
 	return async function (dispatch) {
 		try {
 			// eslint-disable-next-line
-			const res = await axios.post(`${API}/activities`, data);
+			await axios.post(`${API}/activities`, data);
 		} catch (err) {
 			console.error(err);
 		}
@@ -35,11 +36,10 @@ export function addActivity(data) {
 export function getCountries(setLoading) {
 	return async function (dispatch) {
 		try {
-			const res = await axios.get(`${API}/countries`);
-
+			const { data } = await axios.get(`${API}/countries`);
 			if (setLoading) setLoading(false);
 
-			dispatch({ type: GET_COUNTRIES, payload: res.data });
+			dispatch({ type: GET_COUNTRIES, payload: data });
 		} catch (err) {
 			console.error(err);
 		}
@@ -49,11 +49,11 @@ export function getCountries(setLoading) {
 export function getCountrieDetail(id, setLoading) {
 	return async function (dispatch) {
 		try {
-			const res = await axios.get(`${API}/countries/${id.toUpperCase()}`);
+			const { data } = await axios.get(`${API}/countries/${id.toUpperCase()}`);
 
 			if (setLoading) setLoading(false);
 
-			dispatch({ type: GET_COUNTRIE_DETAIL, payload: res.data[0] });
+			dispatch({ type: GET_COUNTRIE_DETAIL, payload: data[0] });
 		} catch (err) {
 			console.error(err);
 		}
@@ -63,23 +63,23 @@ export function getCountrieDetail(id, setLoading) {
 export function getCountriesBySearch(query) {
 	return async function (dispatch) {
 		try {
-			const res = await axios.get(`${API}/countries?name=${query}`);
+			const { data } = await axios.get(`${API}/countries?name=${query}`);
 
-			dispatch({ type: GET_COUNTRIES_BY_QUERY, payload: res.data });
+			dispatch({ type: GET_COUNTRIES_BY_QUERY, payload: data });
 		} catch (err) {
 			console.error(err);
 		}
 	};
 }
 
-export function deleteActivity(data) {
+export function deleteActivity(country) {
 	return async function (dispatch) {
 		try {
-			const res = await axios.delete(
-				`${API}/activities?countryId=${data.countryId}&activityId=${data.activityId}`
+			const { data } = await axios.delete(
+				`${API}/activities?countryId=${country.countryId}&activityId=${country.activityId}`
 			);
 
-			dispatch({ type: DELETE_ACTIVITY, payload: res.data });
+			dispatch({ type: DELETE_ACTIVITY, payload: data });
 		} catch (err) {
 			console.error(err);
 		}

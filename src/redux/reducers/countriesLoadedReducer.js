@@ -22,7 +22,7 @@ const initialState = {
 };
 
 export default function countriesLoadedReducer(state = initialState, action) {
-	switch (action.payload) {
+	switch (action.type) {
 		case GET_COUNTRIES:
 			return getCountriesReduced(state, action);
 
