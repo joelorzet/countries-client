@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { addActivity, clearCountriesLoaded, getCountries, setCurrentPage } from '../../actions/actions.js';
+import {
+	addActivity,
+	clearCountriesLoaded,
+	getCountries,
+	setCurrentPage,
+} from '../../redux/actions/actions.js';
 import Input from '../Input/Input.jsx';
 import Button from '../Button/Button.jsx';
 import style from './Form.module.css';
@@ -38,7 +43,7 @@ function Form() {
 
 	// traemos los paises del store para mapear botones y agregar actividades a cada ciudad
 	const countries = useSelector((e) =>
-		e.countriesLoaded
+		e.countriesLoaded.countriesLoaded
 			.map((e) => {
 				return { name: e.name, id: e.id };
 			})

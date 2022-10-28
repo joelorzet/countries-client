@@ -1,6 +1,5 @@
 import {
 	GET_COUNTRIES,
-	GET_COUNTRIE_DETAIL,
 	ORDER_A_TO_Z,
 	ORDER_Z_TO_A,
 	ORDER_BY_POPULATION_ASC,
@@ -10,40 +9,22 @@ import {
 	SORT_BY_CONTINENT,
 	CLEAR_COUNTRY_DETAIL,
 	CLEAR_COUNTRIES_LOADED,
-	SET_CURRENT_PAGE,
 	DEFAULT,
 } from '../actions/actions.js';
 
+import getCountriesReduced from './reductorsFunctions/getCountries.js';
+import filterByActivity from './reductorsFunctions/filterByActivity.js';
+
 const initialState = {
 	countriesLoaded: [],
-	countrieDetail: {},
 	countriesFiltered: [],
-	currentPage: 1,
 	activities: [],
 };
 
-export default function rootReducer(state = initialState, action) {
-	switch (action.type) {
+export default function countriesLoadedReducer(state = initialState, action) {
+	switch (action.payload) {
 		case GET_COUNTRIES:
-			const activitiesArray = [];
-
-			const activities = action.payload?.map((country) => {
-				return country.Actividad_Turisticas?.map((e) => e);
-			});
-			activities?.forEach((e) => {
-				if (e.length > 0) {
-					e?.forEach((e) => activitiesArray.push(e));
-				}
-			});
-
-			return {
-				...state,
-				countriesLoaded: action.payload,
-				activities: [...activitiesArray],
-			};
-
-		case GET_COUNTRIE_DETAIL:
-			return { ...state, countrieDetail: action.payload };
+			return getCountriesReduced(state, action);
 
 		case CLEAR_COUNTRY_DETAIL:
 			return { ...state, countrieDetail: {} };
@@ -53,9 +34,6 @@ export default function rootReducer(state = initialState, action) {
 
 		case GET_COUNTRIES_BY_QUERY:
 			return { ...state, countriesFiltered: [...action.payload] };
-
-		case SET_CURRENT_PAGE:
-			return { ...state, currentPage: action.payload };
 
 		case ORDER_A_TO_Z:
 			return {
@@ -100,28 +78,7 @@ export default function rootReducer(state = initialState, action) {
 			};
 
 		case FILTER_BY_ACTIVITY:
-			const countrysToAdd = [];
-
-			function hasActivity(arr, activity, country) {
-				if (arr.length > 0) {
-					arr.forEach((e) => {
-						if (e.name.toLowerCase() === activity.toLowerCase()) {
-							countrysToAdd.push(country);
-						}
-					});
-				}
-			}
-			state.countriesLoaded?.forEach((e) => {
-				if (e.Actividad_Turisticas.length > 0) {
-					hasActivity(e.Actividad_Turisticas, action.payload.toLowerCase(), e);
-				}
-			});
-			const add = [...new Set(countrysToAdd)];
-
-			return {
-				...state,
-				countriesFiltered: add,
-			};
+			return filterByActivity(state, action);
 
 		case DEFAULT:
 			return {

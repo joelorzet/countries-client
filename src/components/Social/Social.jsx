@@ -6,8 +6,10 @@ import style from './Social.module.css';
 function Social() {
 	return (
 		<div className={style.container}>
-			{Media?.map((e) => (
-				<SocialItem name={e.name} link={e.link} size='md' icon={e.icon} />
+			{Media?.map((e, i) => (
+				<div key={i}>
+					<SocialItem name={e.name} link={e.link} size='md' icon={e.icon} />
+				</div>
 			))}
 		</div>
 	);

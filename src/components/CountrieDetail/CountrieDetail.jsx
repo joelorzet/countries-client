@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getCountrieDetail, deleteActivity, clearCountrieDetail } from '../../actions/actions.js';
+import { getCountrieDetail, deleteActivity, clearCountrieDetail } from '../../redux/actions/actions.js';
 import { useSelector, useDispatch } from 'react-redux';
 import Button from '../Button/Button.jsx';
 import Loading from '../Loading/Loading.jsx';
@@ -24,7 +24,7 @@ function CountrieDetail() {
 		};
 	}, [dispatch, idPais]);
 
-	const countrie = useSelector((e) => e.countrieDetail);
+	const { countrie } = useSelector((e) => e.countrieDetail);
 
 	useEffect(() => {
 		setCountrieDetail(countrie);

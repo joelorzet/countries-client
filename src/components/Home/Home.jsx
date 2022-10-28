@@ -12,7 +12,7 @@ import {
 	sortByActivity,
 	defaultCountries,
 	sortByContinent,
-} from '../../actions/actions.js';
+} from '../../redux/actions/actions.js';
 import Card from '../Card/Card.jsx';
 import Pagination from '../Pagination/Pagination.jsx';
 import Button from '../Button/Button.jsx';
@@ -24,10 +24,10 @@ function Home() {
 	const dispatch = useDispatch();
 
 	//traemos los paises del store
-	const cities = useSelector((state) => state.countriesLoaded);
-	const filteredCountrys = useSelector((state) => state.countriesFiltered);
-	const activities = useSelector((state) => state.activities);
-	const pageNumber = useSelector((state) => state.currentPage);
+	const cities = useSelector((state) => state.countriesLoaded.countriesLoaded);
+	const filteredCountrys = useSelector((state) => state.countriesLoaded.countriesFiltered);
+	const activities = useSelector((state) => state.countriesLoaded.activities);
+	const pageNumber = useSelector((state) => state.pagination.currentPage);
 
 	// esto es para mapear los botones de filtrado por actividad y por continente
 	const activitiesNames = [...new Set(activities?.map((e) => e.name.toLowerCase()))];
