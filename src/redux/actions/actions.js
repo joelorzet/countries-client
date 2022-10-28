@@ -16,8 +16,7 @@ export const ORDER_BY_POPULATION_DES = 'ORDER_BY_POPULATION_DES';
 export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 export const SORT_BY_CONTINENT = 'SORT_BY_CONTINENT';
 
-// const API = 'https://countries-app-joel.herokuapp.com';
-const API = 'http://localhost:3001';
+const API = 'https://countries-app-joel.herokuapp.com';
 
 //configurar objeto para hacer un put con los datos del form
 //cambiamos a axios para no renegar tanto
