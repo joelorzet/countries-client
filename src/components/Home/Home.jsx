@@ -2,16 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
 	clearCountriesLoaded,
-	orderAToZ,
-	orderZToA,
-	orderByPopulationAsc,
-	orderByPopulationDes,
 	getCountriesBySearch,
 	getCountries,
+	sortCountries,
 	setCurrentPage,
-	sortByActivity,
 	defaultCountries,
-	sortByContinent,
+	filterByActivity,
+	filterByContinent,
+	SORT_A_TO_Z,
+	SORT_Z_TO_A,
+	SORT_BY_POPULATION_ASC,
+	SORT_BY_POPULATION_DES,
 } from '../../redux/actions/actions.js';
 import Card from '../Card/Card.jsx';
 import Pagination from '../Pagination/Pagination.jsx';
@@ -149,7 +150,7 @@ function Home() {
 									value={e}
 									type='button'
 									onClick={() => {
-										dispatch(sortByContinent(e));
+										dispatch(filterByContinent(e));
 										setSelectedFilter(e);
 										dispatch(setCurrentPage(1));
 									}}
@@ -176,7 +177,7 @@ function Home() {
 									value='A-Z'
 									type='button'
 									onClick={() => {
-										dispatch(orderAToZ());
+										dispatch(sortCountries(SORT_A_TO_Z));
 										setSelectedSort('az');
 									}}
 									className={(selectedSort === 'az' && 'selected') || 'btnLow'}
@@ -185,7 +186,7 @@ function Home() {
 									value='Z-A'
 									type='button'
 									onClick={() => {
-										dispatch(orderZToA());
+										dispatch(sortCountries(SORT_Z_TO_A));
 										setSelectedSort('za');
 									}}
 									className={(selectedSort === 'za' && 'selected') || 'btnLow'}
@@ -199,7 +200,7 @@ function Home() {
 									value='May-Men'
 									type='button'
 									onClick={() => {
-										dispatch(orderByPopulationAsc());
+										dispatch(sortCountries(SORT_BY_POPULATION_ASC));
 										setSelectedSort('mayor');
 									}}
 									className={(selectedSort === 'mayor' && 'selected') || 'btnLow'}
@@ -208,7 +209,7 @@ function Home() {
 									value='Men-May'
 									type='button'
 									onClick={() => {
-										dispatch(orderByPopulationDes());
+										dispatch(sortCountries(SORT_BY_POPULATION_DES));
 										setSelectedSort('menor');
 									}}
 									className={(selectedSort === 'menor' && 'selected') || 'btnLow'}
@@ -226,7 +227,7 @@ function Home() {
 											value={e}
 											key={e}
 											onClick={() => {
-												dispatch(sortByActivity(e));
+												dispatch(filterByActivity(e));
 												setSelectedFilter(e);
 												dispatch(setCurrentPage(1));
 											}}

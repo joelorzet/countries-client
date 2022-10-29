@@ -14,6 +14,7 @@ export const SORT_A_TO_Z = 'SORT_A_TO_Z';
 export const SORT_Z_TO_A = 'SORT_Z_TO_A';
 export const SORT_BY_POPULATION_ASC = 'SORT_BY_POPULATION_ASC';
 export const SORT_BY_POPULATION_DES = 'SORT_BY_POPULATION_DES';
+export const SORT_COUNTRIES = 'SORT_COUNTRIES';
 export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 
 const API = 'https://countries-app-joel.herokuapp.com';
@@ -103,37 +104,19 @@ export function clearCountriesLoaded() {
 	};
 }
 
-export function orderAToZ() {
+export function sortCountries(payload) {
 	return function (dispatch) {
-		return dispatch({ type: SORT_A_TO_Z });
+		return dispatch({ type: SORT_COUNTRIES, payload });
 	};
 }
 
-export function orderZToA() {
-	return function (dispatch) {
-		return dispatch({ type: SORT_Z_TO_A });
-	};
-}
-
-export function orderByPopulationAsc() {
-	return function (dispatch) {
-		return dispatch({ type: SORT_BY_POPULATION_ASC });
-	};
-}
-
-export function orderByPopulationDes() {
-	return function (dispatch) {
-		return dispatch({ type: SORT_BY_POPULATION_DES });
-	};
-}
-
-export function sortByContinent(continent) {
+export function filterByContinent(continent) {
 	return function (dispatch) {
 		return dispatch({ type: FILTER_BY_CONTINENT, payload: continent });
 	};
 }
 
-export function sortByActivity(activity) {
+export function filterByActivity(activity) {
 	return function (dispatch) {
 		return dispatch({ type: FILTER_BY_ACTIVITY, payload: activity });
 	};
