@@ -1,18 +1,14 @@
-import { GET_COUNTRIE_DETAIL, CLEAR_COUNTRY_DETAIL } from '../actions/actions.js';
-
 const initialState = {
 	countrie: {},
 };
 
+const countrieDetailFunctions = {
+	GET_COUNTRIE_DETAIL: (state, action) => ({ ...state, countrie: action.payload }),
+	CLEAR_COUNTRY_DETAIL: (state) => ({ ...state, countrie: {} }),
+};
+
 export default function countrieDetailReducer(state = initialState, action) {
-	switch (action.type) {
-		case GET_COUNTRIE_DETAIL:
-			return { ...state, countrie: action.payload };
-
-		case CLEAR_COUNTRY_DETAIL:
-			return { ...state, countrie: {} };
-
-		default:
-			return state;
-	}
+	return typeof countrieDetailFunctions[action.type] === 'function'
+		? countrieDetailFunctions[action.type](state, action)
+		: state;
 }
