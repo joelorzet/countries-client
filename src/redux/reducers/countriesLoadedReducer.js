@@ -12,9 +12,9 @@ import {
 	DEFAULT,
 } from '../actions/actions.js';
 
-import getCountriesReduced from './reductorsFunctions/getCountries.js';
-import { filterByActivity, filterByContintent } from './reductorsFunctions/filterCountries.js';
-import sortCountries from './reductorsFunctions/sortCountries.js';
+import getCountriesReduced from './reducingFunctions/getCountries.js';
+import { filterByActivity, filterByContintent } from './reducingFunctions/filterCountries.js';
+import sortCountries from './reducingFunctions/sortCountries.js';
 
 const initialState = {
 	countriesLoaded: [],
