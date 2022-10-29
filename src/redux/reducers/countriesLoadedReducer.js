@@ -8,7 +8,7 @@ const initialState = {
 	activities: [],
 };
 
-const countriesLoadedFunctions = {
+const reducerController = {
 	GET_COUNTRIES: (state, action) => getCountriesReduced(state, action),
 	CLEAR_COUNTRY_DETAIL: (state) => ({ ...state, countrieDetail: {} }),
 	CLEAR_COUNTRIES_LOADED: (state) => ({ ...state, countriesLoaded: [], countriesFiltered: [] }),
@@ -23,7 +23,7 @@ const countriesLoadedFunctions = {
 };
 
 export default function countriesLoadedReducer(state = initialState, action) {
-	return typeof countriesLoadedFunctions[action.type] === 'function'
-		? countriesLoadedFunctions[action.type](state, action)
+	return typeof reducerController[action.type] === 'function'
+		? reducerController[action.type](state, action)
 		: state;
 }
