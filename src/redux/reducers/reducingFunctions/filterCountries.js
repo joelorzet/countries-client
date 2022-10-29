@@ -1,4 +1,4 @@
-export default function filterByActivity(state, action) {
+export function filterByActivity(state, action) {
 	const countrysToAdd = [];
 
 	function hasActivity(arr, activity, country) {
@@ -20,5 +20,12 @@ export default function filterByActivity(state, action) {
 	return {
 		...state,
 		countriesFiltered: add,
+	};
+}
+
+export function filterByContintent(state, action) {
+	return {
+		...state,
+		countriesFiltered: state.countriesLoaded.filter((e) => e.continent === action.payload),
 	};
 }
