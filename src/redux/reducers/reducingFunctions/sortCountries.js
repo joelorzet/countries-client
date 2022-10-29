@@ -29,6 +29,6 @@ const sorts = {
 	}),
 };
 
-export default function sortCountries(state, caseType) {
-	return sorts[caseType](state) || state;
+export default function sortCountries(state, action) {
+	return typeof sorts[action.payload] === 'function' ? sorts[action.payload](state) : state;
 }

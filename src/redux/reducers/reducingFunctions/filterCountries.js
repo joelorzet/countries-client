@@ -30,5 +30,7 @@ const filterFunction = {
 };
 
 export default function filterContinents(state, action) {
-	return filterFunction[action.type](state, action) || state;
+	return typeof filterFunction[action.type] === 'function'
+		? filterFunction[action.type](state, action)
+		: state;
 }
