@@ -10,9 +10,16 @@ export default function getCountriesReduced(state, action) {
 		}
 	});
 
+	const continentNames = [
+		...new Set(
+			action.payload?.map((e) => e.continent).sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()))
+		),
+	];
+
 	return {
 		...state,
 		countriesLoaded: action.payload,
 		activities: [...activitiesArray],
+		continents: [...continentNames],
 	};
 }

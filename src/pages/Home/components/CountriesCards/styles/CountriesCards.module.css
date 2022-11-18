@@ -1,0 +1,9 @@
+.countriescards{
+    margin-top: 20px;
+    display: flex;
+    width: 90%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}

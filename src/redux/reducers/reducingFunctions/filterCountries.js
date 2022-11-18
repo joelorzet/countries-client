@@ -2,6 +2,7 @@ const filterFunction = {
 	FILTER_BY_CONTINENT: (state, action) => ({
 		...state,
 		countriesFiltered: state.countriesLoaded.filter((e) => e.continent === action.payload),
+		selectedFilter: action.payload,
 	}),
 	FILTER_BY_ACTIVITY: (state, action) => {
 		const countrysToAdd = [];
@@ -25,6 +26,7 @@ const filterFunction = {
 		return {
 			...state,
 			countriesFiltered: add,
+			selectedFilter: action.payload,
 		};
 	},
 };

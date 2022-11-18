@@ -1,7 +1,7 @@
 import './App.css';
 import { Route } from 'react-router-dom';
 import LandingPage from './components/LandingPage/LandingPage.jsx';
-import Home from './components/Home/Home.jsx';
+import Home from './pages/Home/Home';
 import Form from './components/FormTuristicRoute/Form';
 import CountrieDetail from './components/CountrieDetail/CountrieDetail.jsx';
 import NavBar from './components/NavBar/Nav.jsx';
