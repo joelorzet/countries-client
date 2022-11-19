@@ -3,10 +3,10 @@ import { Route } from 'react-router-dom';
 import LandingPage from './components/LandingPage/LandingPage.jsx';
 import Home from './pages/Home/Home';
 import Form from './components/FormTuristicRoute/Form';
-import CountrieDetail from './components/CountrieDetail/CountrieDetail.jsx';
 import NavBar from './components/NavBar/Nav.jsx';
 import Footer from './components/Footer/Footer';
 import { PATH } from './routes.js';
+import CountrieDetail from './pages/CountriesDetail/CountriesDetail';
 
 function App() {
 	return (

@@ -1,23 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Loading from '../../components/Loading/Loading';
-import Pagination from '../../components/Pagination/Pagination';
+import { useDispatch } from 'react-redux';
+import { Loading, Pagination } from '../../components';
 import { usePagination } from '../../hooks/usePagination';
 import { clearCountriesLoaded, getCountries } from '../../redux/actions/actions';
-import {
-	CountriesCards,
-	FilterByActivity,
-	FilterByContinent,
-	SearchBar,
-	SortByName,
-	SortByPopulation,
-} from './components';
+import { CountriesCards, FilterByContinent, SearchBar } from './components';
+import { Sorts } from './components/Sorts';
 import styles from './styles/Home.module.css';
 
 const Home = () => {
 	const dispatch = useDispatch();
-	const activities = useSelector((state) => state.countriesLoaded.activities);
-	const showActivitiesFilter = activities.length > 0 ? true : false;
 
 	const [loading, setLoading] = useState(true);
 
@@ -29,7 +20,7 @@ const Home = () => {
 		};
 	}, [dispatch]);
 
-	const { currentPosts, postPerPage, totalPosts, currentPage, setPostPerPage, setSort } = usePagination();
+	const { postPerPage, totalPosts, currentPage, setPostPerPage, setPageNumber } = usePagination();
 
 	return (
 		<div className={styles.container}>
@@ -39,18 +30,14 @@ const Home = () => {
 				<div className={styles.container}>
 					<SearchBar />
 					<FilterByContinent />
-					<div className={styles.sort}>
-						<SortByName sort={setSort} />
-						<SortByPopulation sort={setSort} />
-
-						{showActivitiesFilter && <FilterByActivity />}
-					</div>
-					<CountriesCards countries={currentPosts} />
+					<Sorts />
+					<CountriesCards />
 					<Pagination
 						postPerPage={postPerPage}
 						totalPosts={totalPosts}
 						currentPage={currentPage}
 						setPostPerPage={setPostPerPage}
+						setPageNumber={setPageNumber}
 					/>
 				</div>
 			)}

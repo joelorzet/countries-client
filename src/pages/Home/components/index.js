@@ -5,3 +5,4 @@ export * from './FilterByContinent';
 export * from './SearchBar';
 export * from './SortByName';
 export * from './SortByPopulation';
+export * from './Sorts';

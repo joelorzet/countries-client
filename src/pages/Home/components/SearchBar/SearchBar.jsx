@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import Button from '../../../../components/Button/Button';
-import Input from '../../../../components/Input/Input';
+import { Button, Input } from '../../../../components';
 import { getCountriesBySearch, setCurrentPage } from '../../../../redux/actions/actions';
 import styles from './styles/SearchBar.module.css';
 

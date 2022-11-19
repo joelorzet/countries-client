@@ -1,1 +1,10 @@
 export { default as Home } from './Home';
+export * from './components/ActivityButtons';
+export * from './components/CountriesCards';
+export * from './components/FilterByActivity';
+export * from './components/FilterByContinent';
+export * from './components/SearchBar';
+export * from './components/SortByName';
+export * from './components/SortByPopulation';
+export * from './components/Sorts';
+export * from './components';

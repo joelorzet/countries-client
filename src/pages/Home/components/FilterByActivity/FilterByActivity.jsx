@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Button from '../../../../components/Button/Button';
+import { Button } from '../../../../components';
 import { filterByActivity, setCurrentPage } from '../../../../redux/actions/actions';
 import styles from './styles/FilterByActivity.module.css';
 
@@ -9,6 +9,10 @@ const FilterByActivity = () => {
 	const selectedFilter = useSelector((state) => state.countriesLoaded.selectedFilter);
 	const activities = useSelector((state) => state.countriesLoaded.activities);
 	const activitiesNames = [...new Set(activities?.map((e) => e.name.toLowerCase()))];
+
+	const showActivitiesFilter = activities.length > 0 ? true : false;
+
+	if (!showActivitiesFilter) return <span></span>;
 
 	return (
 		<div className={styles.filterbyactivity}>

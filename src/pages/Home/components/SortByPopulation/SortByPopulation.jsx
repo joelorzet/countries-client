@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Button from '../../../../components/Button/Button';
+import { Button } from '../../../../components';
+import { usePagination } from '../../../../hooks/usePagination';
 import {
 	sortCountries,
 	SORT_BY_POPULATION_ASC,
@@ -8,9 +9,10 @@ import {
 } from '../../../../redux/actions/actions';
 import styles from './styles/SortByPopulation.module.css';
 
-const SortByPopulation = ({ sort }) => {
+const SortByPopulation = () => {
 	const dispatch = useDispatch();
 	const selectedSort = useSelector((state) => state.countriesLoaded.selectedSort);
+	const { setSort } = usePagination();
 
 	return (
 		<div className={styles.container}>
@@ -21,7 +23,7 @@ const SortByPopulation = ({ sort }) => {
 					type='button'
 					onClick={() => {
 						dispatch(sortCountries(SORT_BY_POPULATION_ASC));
-						sort('mm');
+						setSort('mm');
 					}}
 					className={(selectedSort === SORT_BY_POPULATION_ASC && 'selected') || 'btnLow'}
 				/>
@@ -30,7 +32,7 @@ const SortByPopulation = ({ sort }) => {
 					type='button'
 					onClick={() => {
 						dispatch(sortCountries(SORT_BY_POPULATION_DES));
-						sort('mn');
+						setSort('mn');
 					}}
 					className={(selectedSort === SORT_BY_POPULATION_DES && 'selected') || 'btnLow'}
 				/>

@@ -4,7 +4,7 @@ import { setCurrentPage } from '../../redux/actions/actions.js';
 import Button from '../Button/Button.jsx';
 import style from './Pagination.module.css';
 
-function Pagination({ postPerPage, totalPosts, setPostPerPage, currentPage }) {
+function Pagination({ postPerPage, totalPosts, setPostPerPage, currentPage, setPageNumber }) {
 	const dispatch = useDispatch();
 
 	const pageNumbers = [];
@@ -32,6 +32,7 @@ function Pagination({ postPerPage, totalPosts, setPostPerPage, currentPage }) {
 						className='btnLow'
 						onClick={() => {
 							dispatch(setCurrentPage(currentPage - 1));
+							setPageNumber(currentPage - 1);
 						}}
 					/>
 				)}
@@ -42,6 +43,7 @@ function Pagination({ postPerPage, totalPosts, setPostPerPage, currentPage }) {
 							value={e}
 							onClick={() => {
 								dispatch(setCurrentPage(e));
+								setPageNumber(e);
 							}}
 							key={e}
 							className={(e === currentPage && 'selected') || 'btnLow'}
@@ -55,6 +57,7 @@ function Pagination({ postPerPage, totalPosts, setPostPerPage, currentPage }) {
 							value={e}
 							onClick={() => {
 								dispatch(setCurrentPage(e));
+								setPageNumber(currentPage + 1);
 							}}
 							key={e}
 							className={(e === currentPage && 'selected') || 'btnLow'}

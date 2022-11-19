@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Button from '../../../../components/Button/Button';
+import { Button } from '../../../../components';
 import { defaultCountries, filterByContinent, setCurrentPage } from '../../../../redux/actions/actions';
 import styles from './styles/FilterByContinent.module.css';
 

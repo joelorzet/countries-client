@@ -3,18 +3,16 @@ import { useSelector } from 'react-redux';
 
 export function usePagination() {
 	const pageNumber = useSelector((state) => state.pagination.currentPage);
-	const cities = useSelector((state) => state.countriesLoaded.countriesLoaded);
-	const filteredCountrys = useSelector((state) => state.countriesLoaded.countriesFiltered);
-
-	//si cambia el numero de pagina en el estado, lo cambiamos aca
-	useEffect(() => {
-		setPageNumber(pageNumber);
-	}, [pageNumber]);
+	const { countriesLoaded, countriesFiltered } = useSelector((state) => state.countriesLoaded);
 
 	//para el paginado
 	const [currentPage, setPageNumber] = useState(pageNumber);
 	const [sort, setSort] = useState('');
 
+	//si cambia el numero de pagina en el estado, lo cambiamos aca
+	useEffect(() => {
+		setPageNumber(pageNumber);
+	}, [pageNumber]);
 	//una suma booleana para ver si es que mostramos 9 páginas para la primer parte,
 	//o mostramos 10 a partir de las siguientes páginas
 	const itsFirstPage = currentPage !== 1 ? true : false;
@@ -23,20 +21,19 @@ export function usePagination() {
 	// aca definimos cuantas paginas deberia tener el paginado
 	const indexOfLastPost = currentPage * postPerPage;
 	const indexOfFirstPost = indexOfLastPost - postPerPage;
-	const totalPosts = filteredCountrys.length ? filteredCountrys.length : cities.length;
+	const totalPosts = countriesFiltered.length ? countriesFiltered.length : countriesLoaded.length;
 
 	const setPosts = () => {
-		return filteredCountrys.length
-			? filteredCountrys.slice(indexOfFirstPost, indexOfLastPost)
-			: cities.slice(indexOfFirstPost, indexOfLastPost);
+		return countriesFiltered.length
+			? countriesFiltered.slice(indexOfFirstPost, indexOfLastPost)
+			: countriesLoaded.slice(indexOfFirstPost, indexOfLastPost);
 	};
 
-	let posts = setPosts();
+	const [currentPosts, setCurrentPosts] = useState(setPosts());
+
 	useEffect(() => {
 		setCurrentPosts(setPosts());
-	}, [cities, filteredCountrys, sort, pageNumber]);
+	}, [countriesLoaded, countriesFiltered, sort, pageNumber, setCurrentPosts]);
 
-	const [currentPosts, setCurrentPosts] = useState(posts);
-
-	return { currentPosts, postPerPage, totalPosts, currentPage, setPostPerPage, setSort };
+	return { currentPosts, postPerPage, totalPosts, currentPage, setPostPerPage, setSort, setPageNumber };
 }
