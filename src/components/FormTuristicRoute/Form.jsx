@@ -6,11 +6,15 @@ import {
 	clearCountriesLoaded,
 	getCountries,
 	setCurrentPage,
+	toogleAdition,
 } from '../../redux/actions/actions.js';
 import Input from '../Input/Input.jsx';
 import Button from '../Button/Button.jsx';
 import style from './Form.module.css';
 import validate from '../../Utils/validate.js';
+import SelectCountries from '../../pages/CreateActivity/components/SelectCountries/SelectCountries.jsx';
+import ShowCountriesSelected from '../../pages/CreateActivity/components/ShowCountriesSelected/ShowCountriesSelected.jsx';
+import ManualSearchCountries from '../../pages/CreateActivity/components/ManualSearchCountries/ManualSearchCountries.jsx';
 
 function Form() {
 	//estado global del formulario para el dispatch
@@ -21,9 +25,6 @@ function Form() {
 
 	//status para cuando se envia el form mostrar el envio exitoso al final del boton
 	const [status, setStatus] = useState(false);
-
-	// busqueda manual de paises en input
-	const [search, setSearch] = useState({});
 
 	const [sended, setSended] = useState(false);
 
@@ -41,38 +42,12 @@ function Form() {
 		};
 	}, [dispatch]);
 
-	// traemos los paises del store para mapear botones y agregar actividades a cada ciudad
-	const countries = useSelector((e) =>
-		e.countriesLoaded.countriesLoaded
-			.map((e) => {
-				return { name: e.name, id: e.id };
-			})
-			.sort((a, b) => {
-				return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
-			})
-	);
-
-	//mostramos ciudades agregadas
-	const showButtonsCities = Object.keys(search).length > 0 ? true : false;
-	const showContainerCities = search?.buttonSearch?.length > 0 ? true : false;
-
-	// cambiamos el estado de cada boton para saber si es que al final se agregan o no al estado global
-	const switchAddition = (id) => {
-		setAdded({
-			...added,
-			[id]: !added[id],
-		});
-	};
-
 	// para setear data si es que tenemos un pais nuevo para agregar a la actividad
 	useEffect(() => {
 		setData({ ...data, countryId: [...propsTrueToArr()] });
 
 		// eslint-disable-next-line
 	}, [added]);
-
-	//ademas de validar los inputs, verificamos que al menos haya 1 país agregado...
-	//seria como una segunda validacion para estar seguros de que no se mande con faltante de informacion
 
 	useEffect(() => {
 		setError(validate(data));
@@ -171,77 +146,11 @@ function Form() {
 					/>
 				</div>
 
-				{/* busqueda manual */}
-				<div>
-					{/* aca estan mapeados los paises que se agregaron, tambien cuentan con las funciones de 
-					de agregar pais, o para ser retirados de ahi mismo */}
+				<ManualSearchCountries />
 
-					<Input
-						label='Buscar manualmente'
-						name='buttonSearch'
-						placeholder='Ingrese su búsqueda'
-						className='secondary'
-						state={search}
-						setState={setSearch}
-					/>
+				<ShowCountriesSelected />
 
-					{showContainerCities && (
-						<div className={style.btnSearch}>
-							{showButtonsCities &&
-								countries
-									.filter((e) => e.name.toLowerCase().includes(search.buttonSearch.toLowerCase()))
-									.map((e) => (
-										<Button
-											value={e.name}
-											key={e.id}
-											onClick={() => {
-												switchAddition(e.id);
-												setSearch({});
-											}}
-											type='button'
-											className={(added[e.id] && 'selected') || 'btnLow'}
-										/>
-									))}
-						</div>
-					)}
-
-					{/* aca estan los paises seleccionados que van a tener la actividad 
-					todos cuentan con la funcinoalidad de ser seleccionados y desseleccionarse */}
-					<h3 className={style.h3}>Su elección</h3>
-
-					<div className={style.buttonsToShow}>
-						{countries
-							.filter((e) => data?.countryId?.includes(e.id))
-							.map((e) => (
-								<Button
-									value={e.name}
-									key={e.id}
-									onClick={() => {
-										switchAddition(e.id);
-										setSearch({});
-									}}
-									type='button'
-									className={(added[e.id] && 'selected') || 'btnLow'}
-								/>
-							))}
-					</div>
-				</div>
-
-				{/* aca mapeo todos los botones de los paises para que se agreguen al estado */}
-				<div className={style.countries}>
-					{countries?.map((e) => (
-						<Button
-							value={e.name}
-							key={e.id}
-							onClick={() => {
-								switchAddition(e.id);
-								setSearch({});
-							}}
-							type='button'
-							className={(added[e.id] && 'selected') || 'btnLow'}
-						/>
-					))}
-				</div>
+				<SelectCountries />
 
 				{/* boton de envio del formulario */}
 				{Object.keys(errors).length ? (

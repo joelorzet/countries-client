@@ -1,0 +1,15 @@
+.container {
+    padding: 1rem;
+}
+
+.showcountriesselected{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 230px;
+    overflow:auto;
+    gap: 2px;
+    flex-wrap: wrap;
+    margin: 10px 0px;
+}

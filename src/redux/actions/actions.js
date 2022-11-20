@@ -16,6 +16,7 @@ export const SORT_BY_POPULATION_ASC = 'SORT_BY_POPULATION_ASC';
 export const SORT_BY_POPULATION_DES = 'SORT_BY_POPULATION_DES';
 export const SORT_COUNTRIES = 'SORT_COUNTRIES';
 export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+export const TOOGLE_ADDITION = 'TOOGLE_ADDITION';
 
 // const API = 'https://countries-app-joel.herokuapp.com';
 const API = 'http://localhost:3001';
@@ -126,5 +127,11 @@ export function filterByActivity(activity) {
 export function defaultCountries(payload) {
 	return function (dispatch) {
 		return dispatch({ type: DEFAULT, payload });
+	};
+}
+
+export function toogleAdition(payload) {
+	return function (dispatch) {
+		return dispatch({ type: TOOGLE_ADDITION, payload });
 	};
 }
