@@ -14,7 +14,7 @@ const ManualSearchCountries = () => {
 	const showContainerCities = search?.buttonSearch?.length > 0 ? true : false;
 
 	return (
-		<div className={styles.manualsearchcountries}>
+		<div>
 			<Input
 				label='Buscar manualmente'
 				name='buttonSearch'

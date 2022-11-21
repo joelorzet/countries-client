@@ -1,7 +1,6 @@
 export * from './Button';
 export * from './Card';
 export * from './Footer';
-export * from './FormTuristicRoute';
 export * from './Input';
 export * from './LandingPage';
 export * from './Loading';

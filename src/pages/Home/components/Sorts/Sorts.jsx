@@ -1,5 +1,7 @@
 import React from 'react';
-import { FilterByActivity, SortByName, SortByPopulation } from '../../components';
+import { FilterByActivity } from '../FilterByActivity';
+import { SortByName } from '../SortByName';
+import { SortByPopulation } from '../SortByPopulation';
 import styles from './styles/Sorts.module.css';
 
 const Sorts = () => {

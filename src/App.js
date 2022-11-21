@@ -1,12 +1,10 @@
 import './App.css';
 import { Route } from 'react-router-dom';
 import LandingPage from './components/LandingPage/LandingPage.jsx';
-import Home from './pages/Home/Home';
-import Form from './components/FormTuristicRoute/Form';
 import NavBar from './components/NavBar/Nav.jsx';
 import Footer from './components/Footer/Footer';
 import { PATH } from './routes.js';
-import CountrieDetail from './pages/CountriesDetail/CountriesDetail';
+import { CreateActivity, CountriesDetail, Home } from './pages';
 
 function App() {
 	return (
@@ -14,8 +12,8 @@ function App() {
 			<Route exact path={PATH.inicio} component={LandingPage} />
 			<Route path={PATH.home} component={NavBar} />
 			<Route exact path={PATH.home} component={Home} />
-			<Route exact path={PATH.createActivity} component={Form} />
-			<Route exact path='/home/countrie-detail/:idPais' component={CountrieDetail} />
+			<Route exact path={PATH.createActivity} component={CreateActivity} />
+			<Route exact path='/home/countrie-detail/:idPais' component={CountriesDetail} />
 			<Route path={PATH.home} component={Footer} />
 		</div>
 	);
