@@ -17,7 +17,7 @@ export const SORT_BY_POPULATION_DES = 'SORT_BY_POPULATION_DES';
 export const SORT_COUNTRIES = 'SORT_COUNTRIES';
 export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 
-const API = 'https://countries-api.up.railway.app';
+const API = 'https://countries-api-test.onrender.com';
 
 //configurar objeto para hacer un put con los datos del form
 //cambiamos a axios para no renegar tanto
